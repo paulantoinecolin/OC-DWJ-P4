@@ -1,0 +1,19 @@
+body {
+    font-family: 'Montserrat',sans-serif;
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.2;
+    background-color: #f7f8f8;
+    color: #4c4f53;
+    margin: 20px;
+}
+
+.posts-container {
+    padding-right: 15px;
+    padding-left: 15px;
+    padding-top: 60px;
+    padding-bottom: 20px;
+    overflow: hidden;
+    box-sizing: border-box;
+}
