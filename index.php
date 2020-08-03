@@ -22,7 +22,7 @@ try {
                     addComment($_GET['id'], $_POST['author'], $_POST['comment']);
                 }
                 else {
-                    throw new Exception(' : veuillez renseigner les champs obligatoires (pseudo, commentaires).');
+                    throw new Exception('veuillez renseigner tous les champs');
                 }
             }
             else {
@@ -37,5 +37,6 @@ try {
     } 
 }
 catch(Exception $e) {
-    echo 'Erreur : ' . $e->getMessage();
+    $errorMessage = $e->getMessage();
+    require('view/errorView.php');
 }

@@ -3,7 +3,7 @@
 <?php ob_start(); ?>
 <div class="container">
 <h1>Jean Forteroche, écrivain sans histoires</h1>
-<p>Chaque jour retrouvez un nouveau chapitre de mon livre</p>
+<p><em>Chaque jour retrouvez un nouveau chapitre de mon livre</em></p>
 <?php
 while ($data = $posts->fetch())
 {
@@ -16,10 +16,12 @@ while ($data = $posts->fetch())
             </h3>
 
             <p>
+                <!-- Ce code doit aller dans le controleur -->
                 <?php
                     $words = explode(" ", $data['posttext']);
                     $excerptText = implode(" ", array_slice($words, 0, 60));
                 ?>
+                <!-- ===================================== -->
 
                 <?= nl2br(htmlspecialchars($excerptText)) . "..." ?>
             </p>

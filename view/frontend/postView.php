@@ -45,11 +45,11 @@
 <h3>Vous en pensez quoi ?</h3>
 <form action="index.php?action=addComment&amp;id=<?= $post['postid'] ?>" method="post">
     <div>
-        <label for="author">Pseudo*</label><br />
+        <label for="author">Pseudo</label><br />
         <input type="text" id="author" name="author" />
     </div>
     <div>
-        <label for="comment">Commentaire*</label><br />
+        <label for="comment">Commentaire</label><br />
         <textarea id="comment" name="comment"></textarea>
     </div>
     <div>
