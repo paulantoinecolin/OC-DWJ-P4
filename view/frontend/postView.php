@@ -13,23 +13,37 @@
     </p>
 </div>
 
+
+<div class="col">
 <h2>Commentaires</h2>
 
 
+    <div class="row">
+        <div class="col-6">
+    <?php
+    while ($comment = $comments->fetch())
+    {
+    ?>
+        <p><strong><?= htmlspecialchars($comment['commentpseudo']) ?></strong>
+                <br /> le <?= $comment['comment_date_fr'] ?></p>
+    <?php
+        if (!$comment['commentflagged']) {
+    ?>
+            <p><?= nl2br(htmlspecialchars($comment['commenttext'])) ?></p></br>
+            <div class="alert alert-danger"  role="alert">
+                <a class="alert-link" href="index.php?action=flag&amp;id=<?= $post['postid'] ?>&amp;commentid=<?= $comment['commentid'] ?>"> Signaler ce commentaire</a>
+            </div>
+    <?php
+        } else {
+            echo nl2br("<em>Ce commentaire a été supprimé</em></br>");
+        }
+    }
+    ?>
+        </div>
+    </div>
+</div>
 
-<?php
-while ($comment = $comments->fetch())
-{
-?>
-    <p><strong><?= htmlspecialchars($comment['commentpseudo']) ?></strong>
-        <br /> le <?= $comment['comment_date_fr'] ?></p>
-    <p><?= nl2br(htmlspecialchars($comment['commenttext'])) ?></p></br>
-    <p><a href="index.php?action=flag&amp;id=<?= $post['postid'] ?>&amp;commentid=<?= $comment['commentid'] ?>"> Signaler</a></p>
-<?php
-}
-?>
-
-<h3>T'en penses quoi ?</h3>
+<h3>Vous en pensez quoi ?</h3>
 <form action="index.php?action=addComment&amp;id=<?= $post['postid'] ?>" method="post">
     <div>
         <label for="author">Pseudo*</label><br />

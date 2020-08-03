@@ -41,4 +41,5 @@ function flagComment($commentId)
     {
         $commentManager = new \OpenClassrooms\Blog\Model\CommentManager();
         $toggledflag = $commentManager->toggleFlag($commentId);
+        post();
     }
