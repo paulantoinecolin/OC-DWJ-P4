@@ -14,7 +14,6 @@
 </div>
 
 
-<div class="col">
 <h2>Commentaires</h2>
 
 

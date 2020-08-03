@@ -14,9 +14,14 @@ while ($data = $posts->fetch())
             <h3>
             <a href="index.php?action=post&amp;id=<?= $data['postid'] ?>"> <?= htmlspecialchars($data['posttitle']) ?></a>
             </h3>
-            
+
             <p>
-                <?= nl2br(htmlspecialchars($data['posttext'])) ?>
+                <?php
+                    $words = explode(" ", $data['posttext']);
+                    $excerptText = implode(" ", array_slice($words, 0, 60));
+                ?>
+
+                <?= nl2br(htmlspecialchars($excerptText)) . "..." ?>
             </p>
         </div>
     </div>
