@@ -1,14 +1,14 @@
 <?php
 require('controller/frontend.php');
 
+$route = !isset($_GET['action']) ? 'listPosts' : $_GET['action'];
+
 try {
-    switch ('action') {
-        case $_GET['action'] == 'listPosts':
-            if (isset($_GET['action'])) {
+    switch ($route) {
+        case 'listPosts':
                 listPosts();
-            }
             break;  
-        case $_GET['action'] == 'post':
+        case 'post':
             if (isset($_GET['id']) && $_GET['id'] > 0) {
                 post();
             }
@@ -29,8 +29,11 @@ try {
                 throw new Exception('Aucun identifiant de post envoyé');
             }
             break;
-        default:
-            listPosts();
+        case $_GET['action'] == 'flag':
+                flagComment($_GET['commentid']);
+        break;  
+        // default:
+            // Rediriger vers page d'erreur 404
     } 
 }
 catch(Exception $e) {
