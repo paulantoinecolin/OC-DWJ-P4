@@ -25,16 +25,20 @@
     ?>
         <p><strong><?= htmlspecialchars($comment['commentpseudo']) ?></strong>
                 <br /> le <?= $comment['comment_date_fr'] ?></p>
+            <p><?= nl2br(htmlspecialchars($comment['commenttext'])) ?></p></br>
     <?php
         if (!$comment['commentflagged']) {
     ?>
-            <p><?= nl2br(htmlspecialchars($comment['commenttext'])) ?></p></br>
             <div class="alert alert-danger"  role="alert">
                 <a class="alert-link" href="index.php?action=flag&amp;id=<?= $post['postid'] ?>&amp;commentid=<?= $comment['commentid'] ?>"> Signaler ce commentaire</a>
             </div>
     <?php
         } else {
-            echo nl2br("<em>Ce commentaire a été supprimé</em></br>");
+    ?>
+            <div class="alert alert-warning"  role="alert">
+                <em>Ce commentaire a été signalé</em></br>
+            </div>
+    <?php
         }
     }
     ?>

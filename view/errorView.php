@@ -10,7 +10,7 @@ echo ('Erreur : ') . $errorMessage;
 
 ?>
 
-<button type="button" class="btn btn-warning btn-sm mx-3" onclick="goBack()">Go Back</button>
+<button type="button" class="btn btn-warning btn-sm mx-3" onclick="goBack()">Retour</button>
 
 <script>
 function goBack() {
