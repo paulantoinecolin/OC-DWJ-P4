@@ -1,5 +1,6 @@
 <?php
 require('controller/frontend.php');
+require('libs/tools.php');
 
 $route = !isset($_GET['action']) ? 'listPosts' : $_GET['action'];
 

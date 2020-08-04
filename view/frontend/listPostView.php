@@ -12,18 +12,11 @@ while ($data = $posts->fetch())
     <div class="posts-container">
         <div class="post-content">
             <h3>
-            <a href="index.php?action=post&amp;id=<?= $data['postid'] ?>"> <?= htmlspecialchars($data['posttitle']) ?></a>
+            <a href="index.php?action=post&amp;id=<?= $data['postid'] ?>"><?= htmlspecialchars($data['posttitle']) ?></a>
             </h3>
 
             <p>
-                <!-- Ce code doit aller dans le controleur -->
-                <?php
-                    $words = explode(" ", $data['posttext']);
-                    $excerptText = implode(" ", array_slice($words, 0, 60));
-                ?>
-                <!-- ===================================== -->
-
-                <?= nl2br(htmlspecialchars($excerptText)) . "..." ?>
+                <?= nl2br(htmlspecialchars(excerpt($data['posttext']))) . "..." ?>
             </p>
         </div>
     </div>
