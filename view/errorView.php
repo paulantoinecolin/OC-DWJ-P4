@@ -6,7 +6,7 @@
 
 <?php
 
-echo ('Erreur : ') . $errorMessage;
+echo('Erreur : ') . $errorMessage;
 
 ?>
 

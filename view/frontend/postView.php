@@ -20,21 +20,20 @@
     <div class="row">
         <div class="col-6">
     <?php
-    while ($comment = $comments->fetch())
-    {
-    ?>
+    while ($comment = $comments->fetch()) {
+        ?>
         <p><strong><?= htmlspecialchars($comment['commentpseudo']) ?></strong>
                 <br /> le <?= $comment['comment_date_fr'] ?></p>
             <p><?= nl2br(htmlspecialchars($comment['commenttext'])) ?></p></br>
     <?php
         if (!$comment['commentflagged']) {
-    ?>
+            ?>
             <div class="alert alert-danger"  role="alert">
                 <a class="alert-link" href="index.php?action=flag&amp;id=<?= $post['postid'] ?>&amp;commentid=<?= $comment['commentid'] ?>"> Signaler ce commentaire</a>
             </div>
     <?php
         } else {
-    ?>
+            ?>
             <div class="alert alert-warning"  role="alert">
                 <em>Ce commentaire a été signalé</em></br>
             </div>

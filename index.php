@@ -8,12 +8,11 @@ try {
     switch ($route) {
         case 'listPosts':
                 listPosts();
-            break;  
+            break;
         case 'post':
             if (isset($_GET['id']) && $_GET['id'] > 0) {
                 post();
-            }
-            else {
+            } else {
                 throw new Exception('Aucun identifiant de post envoyé');
             }
             break;
@@ -21,23 +20,20 @@ try {
             if (isset($_GET['id']) && $_GET['id'] > 0) {
                 if (!empty($_POST['author']) && !empty($_POST['comment'])) {
                     addComment($_GET['id'], $_POST['author'], $_POST['comment']);
-                }
-                else {
+                } else {
                     throw new Exception('veuillez renseigner tous les champs');
                 }
-            }
-            else {
+            } else {
                 throw new Exception('Aucun identifiant de post envoyé');
             }
             break;
         case $_GET['action'] == 'flag':
                 flagComment($_GET['commentid']);
-        break;  
+        break;
         // default:
             // Rediriger vers page d'erreur 404
-    } 
-}
-catch(Exception $e) {
+    }
+} catch (Exception $e) {
     $errorMessage = $e->getMessage();
     require('view/errorView.php');
 }
