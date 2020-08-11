@@ -39,6 +39,6 @@ function addComment($postId, $author, $comment)
 function flagComment($commentId)
 {
     $commentManager = new \OpenClassrooms\Blog\Model\CommentManager();
-    $toggledflag = $commentManager->toggleFlag($commentId);
+    $signaledflag = $commentManager->signalFlag($commentId);
     post();
 }

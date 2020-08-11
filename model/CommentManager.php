@@ -24,12 +24,12 @@ class CommentManager extends Manager
         return $affectedLines;
     }
 
-    public function toggleFlag($commentId)
+    public function signalFlag($commentId)
     {
         $db = $this->dbConnect();
         $req = $db->prepare('UPDATE comment SET commentflagged = !commentflagged WHERE commentid = ?');
-        $toggledflag = $req->execute(array($commentId));
+        $signaledflag = $req->execute(array($commentId));
 
-        return $toggledflag;
+        return $signaledflag;
     }
 }

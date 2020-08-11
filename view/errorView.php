@@ -22,4 +22,4 @@ function goBack() {
 
 <?php $content = ob_get_clean(); ?>
 
-<?php require('frontend/template.php'); ?>
+<?php require('view/template.php'); ?>

@@ -1,11 +1,16 @@
 <?php
 require('controller/frontend.php');
+require('controller/backend.php');
+require('controller/auth.php');
 require('libs/tools.php');
 
 $route = !isset($_GET['action']) ? 'listPosts' : $_GET['action'];
 
 try {
     switch ($route) {
+        case $_SERVER['REQUEST_URI'] === '/admin':
+            adminAccess();
+        break;
         case 'listPosts':
                 listPosts();
             break;
@@ -30,8 +35,10 @@ try {
         case $_GET['action'] == 'flag':
                 flagComment($_GET['commentid']);
         break;
-        // default:
-            // Rediriger vers page d'erreur 404
+        case $_GET['action'] == 'logout':
+                logout();
+        break;
+
     }
 } catch (Exception $e) {
     $errorMessage = $e->getMessage();
