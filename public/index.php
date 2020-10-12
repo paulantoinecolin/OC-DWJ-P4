@@ -1,8 +1,13 @@
 <?php
-require('controller/frontend.php');
-require('controller/backend.php');
-require('controller/auth.php');
-require('libs/tools.php');
+// require('libs/autoload.php');
+require_once('../controller/frontend.php');
+require_once('../controller/backend.php');
+require_once('../controller/auth.php');
+require_once('../libs/tools.php');
+
+session_start();
+
+// require_once($_SERVER['DOCUMENT_ROOT'] . '/controller/auth.php');
 
 $route = !isset($_GET['action']) ? 'listPosts' : $_GET['action'];
 
@@ -13,14 +18,14 @@ try {
         break;
         case 'listPosts':
                 listPosts();
-            break;
+        break;
         case 'post':
             if (isset($_GET['id']) && $_GET['id'] > 0) {
                 post();
             } else {
                 throw new Exception('Aucun identifiant de post envoyé');
             }
-            break;
+        break;
         case $_GET['action'] == 'addComment':
             if (isset($_GET['id']) && $_GET['id'] > 0) {
                 if (!empty($_POST['author']) && !empty($_POST['comment'])) {

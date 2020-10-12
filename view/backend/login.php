@@ -9,7 +9,7 @@ $error = null;
 $password = 'doe';
 if (!empty($_POST['login']) && !empty($_POST['password'])) {
     if ($_POST['login'] === 'Jean_Forteroche' && $_POST['password'] === 'doe') {
-        session_start();
+        // session_start();
         $_SESSION['connected'] = 1;
         header('Location: dashboard.php');
         exit();

@@ -1,10 +1,3 @@
-<?php
-    if (session_status() === PHP_SESSION_NONE) {
-        session_start();
-    }
-    require_once($_SERVER['DOCUMENT_ROOT'] . '/controller/auth.php');
-?>
-
 <!DOCTYPE html>
 <html>
     <head>

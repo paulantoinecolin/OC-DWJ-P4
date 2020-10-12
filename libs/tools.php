@@ -8,9 +8,9 @@
             return $excerptText;
         }
 
-        function logout()
-        {
-            session_start();
-            unset($_SESSION['connected']);
-            // header('Location: login.php?msg=logout_success');
-        }
+        // function logout()
+        // {
+        //     session_start();
+        //     unset($_SESSION['connected']);
+        //     // header('Location: login.php?msg=logout_success');
+        // }

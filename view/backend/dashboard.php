@@ -1,5 +1,5 @@
 <?php
-require_once($_SERVER['DOCUMENT_ROOT'] . '/controller/auth.php');
+require_once('../controller/auth.php');
 forceAdminConnection();
 ?>
 

@@ -4,7 +4,7 @@ function isConnected()
 {
     // Si la session n'est pas active je lance un session_start
     if (session_status() === PHP_SESSION_NONE) {
-        session_start();
+        // session_start();
     }
     return !empty($_SESSION['connected']);
 }

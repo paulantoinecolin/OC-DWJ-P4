@@ -2,9 +2,9 @@
 
 namespace OpenClassrooms\Blog\Model;
 
-require_once("model/Manager.php");
+require_once("../model/Manager.php");
 
-class AdminManager extends Manager
+class UserManager extends Manager
 {
     public function getAdminClearance()
     {
