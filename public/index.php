@@ -17,11 +17,13 @@ try {
             adminAccess();
         break;
         case 'listPosts':
-                listPosts();
+                $postController = new \OpenClassrooms\Blog\Model\PostController();
+                $postController->listPosts();
         break;
         case 'post':
             if (isset($_GET['id']) && $_GET['id'] > 0) {
-                post();
+                $postController = new \OpenClassrooms\Blog\Model\PostController();
+                $postController->post();
             } else {
                 throw new Exception('Aucun identifiant de post envoyé');
             }
@@ -29,7 +31,8 @@ try {
         case $_GET['action'] == 'addComment':
             if (isset($_GET['id']) && $_GET['id'] > 0) {
                 if (!empty($_POST['author']) && !empty($_POST['comment'])) {
-                    addComment($_GET['id'], $_POST['author'], $_POST['comment']);
+                    $postController = new \OpenClassrooms\Blog\Model\PostController();
+                $postController-> addComment($_GET['id'], $_POST['author'], $_POST['comment']);
                 } else {
                     throw new Exception('veuillez renseigner tous les champs');
                 }
@@ -38,7 +41,8 @@ try {
             }
             break;
         case $_GET['action'] == 'flag':
-                flagComment($_GET['commentid']);
+            $postController = new \OpenClassrooms\Blog\Model\PostController();
+            $postController->flagComment($_GET['commentid']);
         break;
         case $_GET['action'] == 'logout':
                 logout();
