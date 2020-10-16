@@ -1,13 +1,13 @@
 <?php
 
 // Chargement des classes
-require_once('../model/UserManager.php');
+require_once('../libraries/models/UserManager.php');
 // require_once('model/PostManager.php');
 // require_once('model/CommentManager.php');
 
 function adminAccess()
 {
-    require('../view/backend/dashboard.php');
+    require('../views/backend/dashboard.php');
 }
 
 function checkAdminClearance()

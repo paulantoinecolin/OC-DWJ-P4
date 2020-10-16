@@ -1,10 +1,10 @@
 <?php
-// require('libs/autoload.php');
-require_once('../controller/PostController.php');
-require_once('../controller/CommentController.php');
-require_once('../controller/backend.php');
-require_once('../controller/auth.php');
-require_once('../libs/tools.php');
+// require('libraries/autoload.php');
+require_once('../libraries/tools.php');
+require_once('../libraries/controllers/PostController.php');
+require_once('../libraries/controllers/CommentController.php');
+require_once('../libraries/controllers/backend.php');
+require_once('../libraries/controllers/auth.php');
 
 session_start();
 

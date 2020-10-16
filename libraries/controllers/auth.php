@@ -13,7 +13,7 @@ function isConnected()
 function forceAdminConnection()
 {
     if (!isConnected()) {
-        header('Location: ../view/backend/login.php');
+        header('Location: ../views/backend/login.php');
         exit();
     }
 }

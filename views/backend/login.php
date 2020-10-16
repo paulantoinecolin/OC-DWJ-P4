@@ -18,7 +18,7 @@ if (!empty($_POST['login']) && !empty($_POST['password'])) {
     }
 }
 
-require_once('../../controller/auth.php');
+require_once('../../libraries/controllers/auth.php');
 if (isConnected()) {
     header('Location: dashboard.php');
     exit();

@@ -2,7 +2,7 @@
 
 namespace OpenClassrooms\Blog\Model;
 
-require_once("../model/Manager.php");
+require_once("../libraries/models/Manager.php");
 
 class UserManager extends Manager
 {

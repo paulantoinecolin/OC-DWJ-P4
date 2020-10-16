@@ -3,8 +3,8 @@
 namespace OpenClassrooms\Blog\Controller;
 
 // Chargement des classes
-require_once('../model/PostManager.php');
-require_once('../model/CommentManager.php');
+require_once('../libraries/models/PostManager.php');
+require_once('../libraries/models/CommentManager.php');
 
 class CommentController
 {

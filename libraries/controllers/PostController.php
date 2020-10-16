@@ -3,8 +3,8 @@
 namespace OpenClassrooms\Blog\Controller;
 
 // Chargement des classes
-require_once('../model/PostManager.php');
-require_once('../model/CommentManager.php');
+require_once('../libraries/models/PostManager.php');
+require_once('../libraries/models/CommentManager.php');
 
 class PostController
 {
@@ -13,7 +13,7 @@ class PostController
         $postManager = new \OpenClassrooms\Blog\Model\PostManager();
         $posts = $postManager->getPosts();
 
-        require('../view/frontend/listPostView.php');
+        require('../views/frontend/listPostView.php');
     }
 
     public function post()
@@ -24,6 +24,6 @@ class PostController
         $post = $postManager->getPost($_GET['id']);
         $comments = $commentManager->getComments($_GET['id']);
 
-        require('../view/frontend/postView.php');
+        require('../views/frontend/postView.php');
     }
 }
