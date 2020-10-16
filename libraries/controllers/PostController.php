@@ -13,7 +13,7 @@ class PostController
         $postManager = new \OpenClassrooms\Blog\Model\PostManager();
         $posts = $postManager->getPosts();
 
-        require('../views/frontend/listPostView.php');
+        require('../views/articles/listPostView.php');
     }
 
     public function post()
@@ -24,6 +24,6 @@ class PostController
         $post = $postManager->getPost($_GET['id']);
         $comments = $commentManager->getComments($_GET['id']);
 
-        require('../views/frontend/postView.php');
+        require('../views/articles/postView.php');
     }
 }
