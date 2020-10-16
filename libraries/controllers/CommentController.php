@@ -1,18 +1,18 @@
 <?php
 
-namespace OpenClassrooms\Blog\Controller;
+namespace controllers;
 
 // Chargement des classes
-require_once('../libraries/models/PostManager.php');
-require_once('../libraries/models/CommentManager.php');
+require_once('../libraries/models/Post.php');
+require_once('../libraries/models/Comment.php');
 
 class CommentController
 {
     public function addComment($postId, $author, $comment)
     {
-        $commentManager = new \OpenClassrooms\Blog\Model\CommentManager();
+        $Comment = new \models\Comment();
 
-        $affectedLines = $commentManager->postComment($postId, $author, $comment);
+        $affectedLines = $Comment->postComment($postId, $author, $comment);
 
         if ($affectedLines === false) {
             throw new Exception('Impossible d\'ajouter le commentaire !');
@@ -23,9 +23,9 @@ class CommentController
 
     public function flagComment($commentId)
     {
-        $commentManager = new \OpenClassrooms\Blog\Model\CommentManager();
-        $signaledflag = $commentManager->signalFlag($commentId);
-        $postController = new \OpenClassrooms\Blog\Controller\PostController();
+        $Comment = new \models\Comment();
+        $signaledflag = $Comment->signalFlag($commentId);
+        $postController = new \controllers\PostController();
         $postController->post();
     }
 }
