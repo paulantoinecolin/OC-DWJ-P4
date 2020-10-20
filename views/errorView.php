@@ -1,4 +1,4 @@
-<?php $title = 'Oops perdu'; ?>
+<?php $pageTitle = 'Oops perdu'; ?>
 
 <?php ob_start(); ?>
 
@@ -20,6 +20,6 @@ function goBack() {
 
 </div>
 
-<?php $content = ob_get_clean(); ?>
+<?php $pageContent = ob_get_clean(); ?>
 
-<?php require('view/layout.php'); ?>
+<?php require('layout.view.php'); ?>

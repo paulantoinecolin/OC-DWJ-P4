@@ -1,5 +1,6 @@
 <?php
 // require('libraries/autoload.php');
+require_once('../libraries/autoload.php');
 require_once('../libraries/tools.php');
 require_once('../libraries/controllers/PostController.php');
 require_once('../libraries/controllers/CommentController.php');
@@ -52,5 +53,5 @@ try {
     }
 } catch (Exception $e) {
     $errorMessage = $e->getMessage();
-    require('view/frontend/errorView.php');
+    require('../views/errorView.php');
 }

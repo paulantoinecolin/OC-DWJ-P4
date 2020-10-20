@@ -1,4 +1,4 @@
-<?php $title = htmlspecialchars($post['posttitle']); ?>
+<?php $pageTitle = htmlspecialchars($post['posttitle']); ?>
 
 <?php ob_start(); ?>
 <div class="container">
@@ -60,6 +60,6 @@
     </div>
 </form>
 </div>
-<?php $content = ob_get_clean(); ?>
+<?php $pageContent = ob_get_clean(); ?>
 
-<?php require('../views/layout.php'); ?>
+<?php require('../views/layout.view.php'); ?>

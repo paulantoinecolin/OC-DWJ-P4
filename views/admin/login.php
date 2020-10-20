@@ -1,4 +1,4 @@
-<?php $title = 'Page de connexion';?>
+<?php $pageTitle = 'Page de connexion';?>
 
 <?php ob_start(); ?>
 
@@ -43,6 +43,6 @@ if (isConnected()) {
 	<button type="submit" class="btn btn-primary">Login</button>
 </form>
 
-<?php $content = ob_get_clean(); ?>
+<?php $pageContent = ob_get_clean(); ?>
 
-<?php require('../layout.php'); ?>
+<?php require('../layout.view.php'); ?>
