@@ -9,7 +9,7 @@ class Article extends Controller
 
     public function index() {
         // Montrer la liste
-        // $articles = $this->model->findAll("postcreatedate DESC");
+        $articles = $this->model->findAll("postcreatedate DESC");
 
         // Affichage
         $pageTitle = "Accueil";
