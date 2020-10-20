@@ -4,7 +4,6 @@ namespace Controllers;
 
 class Comment extends Controller
 {
-    
     protected $modelName = \Models\Comment::class;
     
     public function insert()
@@ -31,30 +30,27 @@ class Comment extends Controller
         }
 
         // Enfin l'id de l'article
-        $postid = null;
-        if (!empty($_POST['article_id']) && ctype_digit($_POST['article_id'])) {
-            $postid = $_POST['article_id'];
+        $id = null;
+        if (!empty($_POST['id']) && ctype_digit($_POST['id'])) {
+            $id = $_POST['id'];
         }
 
         // Vérification finale des infos envoyées dans le formulaire (donc dans le POST)
         // Si il n'y a pas d'auteur OU qu'il n'y a pas de contenu OU qu'il n'y a pas d'identifiant d'article
-        if (!$commentpseudo || !$commenttext || !$postid) {
-            
+        if (!$commentpseudo || !$commenttext || !$id) {
             die("Votre formulaire a été mal rempli !");
         }
 
-
-        $article = $articleModel->find($article_id);
+        $article = $articleModel->find($id);
         if (!$article) {
             die("Ho ! L'article $id n'existe pas !");
         }
 
         // Insertion du commentaire
-        $this->model->insert($commentpseudo, $commenttext, $postid);
+        $this->model->insert($commentpseudo, $commenttext, $id);
 
         // Redirection vers l'article en question
         \Http::redirect("index.php?controller=article&task=show&id=" . $article_id);
-
     }
 
     public function delete()

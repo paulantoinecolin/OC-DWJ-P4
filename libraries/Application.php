@@ -3,6 +3,7 @@
 class Application {
     public static function process()
     {
+        //Default view for index
         $controllerName = "Article";
         $task = "index";
 

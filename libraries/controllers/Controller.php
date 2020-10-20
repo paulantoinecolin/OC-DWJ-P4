@@ -9,6 +9,6 @@ abstract class Controller {
 
     public function __construct()
     {
-        $this->model = new \Models\Comment();
+        $this->model = new \Models\Article();
     }
 }

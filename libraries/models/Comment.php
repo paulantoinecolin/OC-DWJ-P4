@@ -12,7 +12,7 @@ class Comment extends Model
     public function findAllWithArticle(int $article_id) : array
     {
         // Récupération des commentaires de l'article en question
-        $query = $this->db->prepare("SELECT * FROM comments WHERE id = :id");
+        $query = $this->db->prepare("SELECT * FROM comments WHERE postid = :id");
         $query->execute(['id' => $article_id]);
         $commentaires = $query->fetchAll();
 
@@ -21,9 +21,9 @@ class Comment extends Model
 
     // !! insertComment() -> create()
     // We write a new comment in the db by using the compact function of php
-    public function insert(string $commentpseudo, string $commenttext, int $postid) : void
+    public function insert(string $commentpseudo, string $commenttext, int $article_id) : void
     {
-        $query = $this->db->prepare('INSERT INTO comments SET commentpseudo = :commentpseudo, commenttext = :commenttext, id = :article_id, postcreatedate = NOW()');
+        $query = $this->db->prepare('INSERT INTO comments SET commentpseudo = :commentpseudo, commenttext = :commenttext, postid = :article_id, postcreatedate = NOW()');
         $query->execute(compact('commentpseudo', 'commenttext', 'id'));
     }
 

@@ -4,10 +4,10 @@ namespace Controllers;
 
 class Article extends Controller
 {
-
     protected $modelName = \Models\Article::class;
 
-    public function index() {
+    public function index()
+    {
         // Montrer la liste
         $articles = $this->model->findAll("postcreatedate DESC");
 
@@ -20,7 +20,8 @@ class Article extends Controller
         \Renderer::render('articles/index', compact('pageTitle', 'articles'));
     }
 
-    public function show() {
+    public function show()
+    {
         // Montrer un article
         $commentModel = new \Models\Comment();
 
@@ -44,10 +45,10 @@ class Article extends Controller
         $pageTitle = $article['posttitle'];
 
         \Renderer::render('articles/show', compact('pageTitle', 'article', 'commentaires', 'article_id'));
-
     }
 
-    public function delete() {
+    public function delete()
+    {
         // Supprimer un article
         // On vérifie que le GET possède bien un paramètre "id" (delete.php?id=202) et que c'est bien un nombre
         if (empty($_GET['id']) || !ctype_digit($_GET['id'])) {
@@ -59,8 +60,6 @@ class Article extends Controller
         // Vérification que l'article existe bel et bien
         $article = $this->model->find($id);
         
-        $query = $db->prepare('SELECT * FROM posts WHERE id = :id');
-        $query->execute(['id' => $id]);
         if (!$article) {
             die("L'article $id n'existe pas, vous ne pouvez donc pas le supprimer !");
         }
