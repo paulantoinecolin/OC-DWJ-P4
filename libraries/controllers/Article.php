@@ -6,68 +6,67 @@ class Article extends Controller
 {
     protected $modelName = \Models\Article::class;
 
+    // Display all posts in index.php
     public function index()
     {
-        // Montrer la liste
+        // find all articles in db and order by desc date
         $articles = $this->model->findAll("postcreatedate DESC");
 
-        // Affichage
+        // view title
         $pageTitle = "Accueil";
 
-        // Appel de la fonction render pour démarrer l'ob_start
-        // en lui passant les variables grace à l'association
-        // des fonctions "compact" et "extract" (on évite de faire un tableau)
+        // render the view for the ob_start
+        // use compact/extract functions to alternate between an array and variables
         \Renderer::render('articles/index', compact('pageTitle', 'articles'));
     }
 
+    // Display one post and its comments
     public function show()
     {
-        // Montrer un article
-        $commentModel = new \Models\Comment();
-
-        // On part du principe qu'on ne possède pas de param "id"
+        
+        // let's say we don't have a param "id"
         $article_id = null;
-
-        // Mais si il y'en a un et que c'est un nombre entier alors c'est cool
+        
+        // but if there is one and it's an int we use it
         if (!empty($_GET['id']) && ctype_digit($_GET['id'])) {
             $article_id = $_GET['id'];
         }
 
-        // On peut desormais decider si erreur ou pas
+        // then we can decide for an error or not
         if (!$article_id) {
             die("Vous devez préciser un paramètre `id` dans l`URL !");
         }
-
+        
         $article = $this->model->find($article_id);
+        $commentModel = new \Models\Comment();
         $commentaires = $commentModel->findAllWithArticle($article_id);
 
-        // Affichage
+        // view title
         $pageTitle = $article['posttitle'];
 
         \Renderer::render('articles/show', compact('pageTitle', 'article', 'commentaires', 'article_id'));
     }
 
+    // delete one post
     public function delete()
     {
-        // Supprimer un article
-        // On vérifie que le GET possède bien un paramètre "id" (delete.php?id=202) et que c'est bien un nombre
+        // we check that GET does have an "id" param & int => delete.php?id=202
         if (empty($_GET['id']) || !ctype_digit($_GET['id'])) {
             die("Ho ?! Tu n'as pas précisé l'id de l'article !");
         }
 
         $id = $_GET['id'];
 
-        // Vérification que l'article existe bel et bien
+        // we check that the post exists
         $article = $this->model->find($id);
         
         if (!$article) {
             die("L'article $id n'existe pas, vous ne pouvez donc pas le supprimer !");
         }
 
-        // Réelle suppression de l'article
+        // we remove the article in the db
         $this->model->delete($id);
 
-        // Redirection vers la page d'accueil
         \Http::redirect("index.php");
     }
 }

@@ -19,7 +19,6 @@ abstract class Model
         $query = $this->db->prepare("SELECT * FROM {$this->table} WHERE id = :id");
         $query->execute(['id' => $id]);
         $item = $query->fetch();
-
         return $item;
     }
 
