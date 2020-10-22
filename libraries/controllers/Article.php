@@ -53,7 +53,7 @@ class Article extends Controller
     }
 
     // Insert a new post
-    public function insertArticle()
+    public function insert()
     {
         // we check the form datas in POST and that they are not null
 
@@ -76,14 +76,10 @@ class Article extends Controller
         //     die("Votre formulaire a été mal rempli !");
         // }
 
-
-        $articleModel = new \Models\Article();
-        $this->model->insertArticle($posttitle, $posttext);
-
-        $id = $this->model->find($id);
+        $article_id = $this->model->insert($posttitle, $posttext);
         
 
-        \Http::redirect("index.php?controller=article&task=show&id=" . $id);
+        \Http::redirect("index.php?controller=article&task=show&id=" . $article_id);
     }
 
 
