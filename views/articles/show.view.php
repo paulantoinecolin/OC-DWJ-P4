@@ -4,7 +4,7 @@
     <h1><?= $article['posttitle'] ?></h1>
         <small>Ecrit le <?= $article['postcreatedate'] ?></small>
     <hr>
-    <?= $article['posttext'] ?>
+    <?= html_entity_decode($article['posttext']) ?>
 
     <?php if (count($commentaires) === 0) : ?>
         <h2>Il n'y a pas encore de commentaires pour cet article...</h2>
@@ -16,22 +16,23 @@
             <blockquote>
                 <em><?= $commentaire['commenttext'] ?></em>
             </blockquote>
-            <a href="index.php?controller=comment&task=delete&id=<?= $commentaire['id'] ?>" onclick="return window.confirm('Êtes vous sûr de vouloir supprimer ce commentaire ?')">Supprimer</a>
 
         <?php
             if (!$commentaire['commentflagged']) {
                 ?>
             <div class="alert alert-danger"  role="alert">
-                <a class="alert-link" href="index.php?controller=comment&task=report&id=<?= $commentaire['id'] ?>" onclick="return window.confirm('Êtes vous sûr de vouloir signaler ce commentaire ?')">Signaler ce commentaire</a>
+                <a class="alert-link" href="index.php?controller=comment&task=report&id=<?= $commentaire['id'] ?>" onclick="return window.confirm('Êtes vous sûr de vouloir signaler ce commentaire ?')">Signaler</a>
             </div>
             <?php
             } else {
                 ?>
                 <div class="alert alert-warning"  role="alert">
                 <em>Ce commentaire a été signalé</em></br>
+                <a href="index.php?controller=comment&task=report&id=<?= $commentaire['id'] ?>"">Annuler</a>
             </div>
     <?php
             } ?>
+            <a href="index.php?controller=comment&task=delete&id=<?= $commentaire['id'] ?>" onclick="return window.confirm('Êtes vous sûr de vouloir supprimer ce commentaire ?')">Supprimer le commentaire</a>
         <?php endforeach ?>
 
     <?php endif ?>

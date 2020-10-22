@@ -37,4 +37,11 @@ class Comment extends Model
     }
 
     // We will need a "unflag a comment" method
+    public function moderate(int $id)
+    {
+        $query = $this->db->prepare('UPDATE comments SET commentflagged = !commentflagged WHERE id = :id');
+        $report = $query->execute(['id' => $id]);
+
+        return $report;
+    }
 }

@@ -94,4 +94,27 @@ class Comment extends Controller
 
         \Http::redirect("index.php?controller=article&task=show&id=" . $article_id);
     }
+    
+    public function moderate()
+    {
+        // we catch the "id" param in GET
+        if (empty($_GET['id']) || !ctype_digit($_GET['id'])) {
+            die("Ho ! Fallait préciser le paramètre id en GET !");
+        }
+
+        $id = $_GET['id'];
+
+        // we check if comment exists
+        $commentaire = $this->model->find($id);
+        if (!$commentaire) {
+            die("Aucun commentaire n'a l'identifiant $id !");
+        }
+
+        // firt we catch the post id
+        // then we delete the comment in db
+        $article_id = $commentaire['postid'];
+        $this->model->report($id);
+
+        \Http::redirect("index.php?controller=article&task=show&id=" . $article_id);
+    }
 }
