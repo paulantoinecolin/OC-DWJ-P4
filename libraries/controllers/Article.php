@@ -47,6 +47,46 @@ class Article extends Controller
         \Renderer::render('articles/show', compact('pageTitle', 'article', 'commentaires', 'article_id'));
     }
 
+    public function write()
+    {
+        \Renderer::render('articles/write');
+    }
+
+    // Insert a new post
+    public function insertArticle()
+    {
+        // we check the form datas in POST and that they are not null
+
+        // first the title
+        $posttitle = null;
+        if (!empty($_POST['posttitle'])) {
+            // we take care of security
+            $posttitle = htmlspecialchars($_POST['posttitle']);
+        }
+
+        // then the content
+        $posttext = null;
+        if (!empty($_POST['posttext'])) {
+            // we take care of security
+            $posttext = htmlspecialchars($_POST['posttext']);
+        }
+
+        // last global check
+        // if (!$posttitle|| $posttext) {
+        //     die("Votre formulaire a été mal rempli !");
+        // }
+
+
+        $articleModel = new \Models\Article();
+        $this->model->insertArticle($posttitle, $posttext);
+
+        $id = $this->model->find($id);
+        
+
+        \Http::redirect("index.php?controller=article&task=show&id=" . $id);
+    }
+
+
     // delete one post
     public function delete()
     {

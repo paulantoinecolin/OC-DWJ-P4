@@ -1,7 +1,8 @@
 <?php
 
-class Renderer {
-   // Render the view
+class Renderer
+{
+    // Render the view
     public static function render(string $path, array $variables = [])
     {
         extract($variables);
@@ -11,5 +12,4 @@ class Renderer {
     
         require('views/layout.view.php');
     }
-    
 }
