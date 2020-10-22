@@ -23,7 +23,7 @@ class Comment extends Model
     // We write a new comment in the db by using the compact function of php
     public function insert(string $commentpseudo, string $commenttext, int $postid) : void
     {
-        $query = $this->db->prepare('INSERT INTO comments SET commentpseudo = :commentpseudo, commenttext = :commenttext, postid = :postid, commentcreationdate = NOW()');
+        $query = $this->db->prepare('INSERT INTO comments SET commentpseudo = :commentpseudo, commenttext = :commenttext, postid = :postid');
         $query->execute(compact('commentpseudo', 'commenttext', 'postid'));
     }
 
