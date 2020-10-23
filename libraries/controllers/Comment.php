@@ -95,6 +95,7 @@ class Comment extends Controller
         \Http::redirect("index.php?controller=article&task=show&id=" . $article_id);
     }
     
+     // This method is necessary for the admin only
     public function moderate()
     {
         // we catch the "id" param in GET
@@ -113,7 +114,7 @@ class Comment extends Controller
         // firt we catch the post id
         // then we delete the comment in db
         $article_id = $commentaire['postid'];
-        $this->model->report($id);
+        $this->model->moderate($id);
 
         \Http::redirect("index.php?controller=article&task=show&id=" . $article_id);
     }
