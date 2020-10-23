@@ -10,13 +10,13 @@
 <div class="container">
     <div class="news">    
 
-    <form action="index.php?controller=article&task=insert" method="POST">
-        <h3>Nouvel Article</h3>
+    <form action="index.php?controller=article&task=update&id=<?= $article['id'] ?>" method="POST">
+        <h1><?= $article['posttitle'] ?></h1>
         <div>
-            <textarea name="posttitle" id="" cols="50" rows="1" placeholder="Titre de l'article"></textarea>
+            <textarea name="posttitle" id="" cols="50" rows="1" placeholder=""><?= $article['posttitle'] ?></textarea>
         </div>
         <div>
-            <textarea name="posttext" id="tiny" cols="50" rows="50" placeholder="Contenu de l'article"></textarea>
+            <textarea name="posttext" id="tiny" cols="50" rows="50" placeholder=""><?= $article['posttext'] ?></textarea>
             <input type="hidden" name="id" value="">
         </div>
         <div>
