@@ -16,4 +16,10 @@ class Article extends Model
 
         return $lastInsertId;
     }
+
+    public function update(string $posttitle, string $posttext, int $id)
+    {
+        $query = $this->db->prepare('UPDATE posts SET posttitle = :posttitle, posttext = :posttext WHERE id = :id');
+        $query->execute(compact('posttitle', 'posttext', 'id'));
+    }
 }

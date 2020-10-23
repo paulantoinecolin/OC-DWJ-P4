@@ -78,8 +78,67 @@ class Article extends Controller
 
         $article_id = $this->model->insert($posttitle, $posttext);
         
-
         \Http::redirect("index.php?controller=article&task=show&id=" . $article_id);
+    }
+
+    public function edit()
+    {
+        
+        // let's say we don't have a param "id"
+        $article_id = null;
+        
+        // but if there is one and it's an int we use it
+        if (!empty($_GET['id']) && ctype_digit($_GET['id'])) {
+            $article_id = $_GET['id'];
+        }
+
+        // then we can decide for an error or not
+        if (!$article_id) {
+            die("Vous devez préciser un paramètre `id` dans l`URL !");
+        }
+        
+        $article = $this->model->find($article_id);
+        // var_dump($article);
+        // die();
+      
+        // view title
+        $pageTitle = $article['posttitle'];
+
+        \Renderer::render('articles/edit', compact('pageTitle', 'article', 'article_id'));
+    }
+
+    public function update()
+    {
+        // we catch the "id" param in GET
+        if (empty($_GET['id']) || !ctype_digit($_GET['id'])) {
+            die("Ho ! Fallait préciser le paramètre id en GET !");
+        }
+        
+        $id = $_GET['id'];
+        
+        // we check the form datas in POST and that they are not null
+        // first the title
+        $posttitle = null;
+        if (!empty($_POST['posttitle'])) {
+            // we take care of security
+            $posttitle = htmlspecialchars($_POST['posttitle']);
+        }
+
+        // then the content
+        $posttext = null;
+        if (!empty($_POST['posttext'])) {
+            // we take care of security
+            $posttext = htmlspecialchars($_POST['posttext']);
+        }
+
+        // last global check
+        // if (!$posttitle|| $posttext) {
+        //     die("Votre formulaire a été mal rempli !");
+        // }
+
+        $article_id = $this->model->update($posttitle, $posttext, $id);
+        
+        \Http::redirect("index.php?controller=article&task=show&id=" . $id);
     }
 
 
