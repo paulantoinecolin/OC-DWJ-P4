@@ -1,15 +1,6 @@
 <?php
-// require('libraries/autoload.php');
-require_once('../libraries/autoload.php');
-require_once('../libraries/tools.php');
-require_once('../libraries/controllers/PostController.php');
-require_once('../libraries/controllers/CommentController.php');
-require_once('../libraries/controllers/backend.php');
-require_once('../libraries/controllers/auth.php');
 
 session_start();
-
-// require_once($_SERVER['DOCUMENT_ROOT'] . '/controller/auth.php');
 
 $route = !isset($_GET['action']) ? 'listPosts' : $_GET['action'];
 
