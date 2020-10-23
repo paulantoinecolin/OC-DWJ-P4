@@ -1,5 +1,3 @@
-<?= var_dump($_SESSION); ?> 
-
 <div class="jumbotron">
   <div class="container">
     <h1 class="display-4 font-weight-bold"">Jean Forteroche, écrivain sans histoires</h1>
