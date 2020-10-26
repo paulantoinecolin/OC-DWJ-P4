@@ -5,8 +5,8 @@
     <div class="card-body">
         <h1 class="card-title"><?= $article['posttitle'] ?></h1>
             <small><em>Ecrit le <?= $article['postcreatedate'] ?></em></small></br>
-            <?php if ($_SESSION['isAdmin'] ): ?>
-                <a href="index.php?controller=article&task=edit&id=<?= $article['id'] ?>">Editer cet article</a>
+            <?php if (!$_SESSION['isAdmin']): ?>
+                <a href="index.php?controller=article&task=edit&id=<?= $article['id'] ?>"><img src="../svg/pencil-square.svg" alt="" width="24" height="24" title="pencil-square"></a>
             <?php endif;?>
         <hr>
         <p class="card-text"><?= html_entity_decode($article['posttext']) ?></p>
@@ -31,14 +31,14 @@
             <?php } else { ?>
                 <div class="alert alert-warning"  role="alert">
                 <em>Ce commentaire a été signalé</em></br>
-                    <?php if ($_SESSION['isAdmin'] ): ?>
-                    <a href="index.php?controller=comment&task=moderate&id=<?= $commentaire['id'] ?>"">Annuler</a>
-                    <?php endif;?>
             </div>
-        <?php
-            } 
-                if ($_SESSION['isAdmin'] ): ?>
-                    <a href="index.php?controller=comment&task=delete&id=<?= $commentaire['id'] ?>" onclick="return window.confirm('Êtes vous sûr de vouloir supprimer ce commentaire ?')">Supprimer le commentaire</a>
+            <?php if (!$_SESSION['isAdmin']): ?>
+            <a href="index.php?controller=comment&task=moderate&id=<?= $commentaire['id'] ?>" class="btn btn-outline-secondary"><img src="../svg/hand-thumbs-up.svg" alt="" width="24" height="24" title="hand-thumbs-up"></a>
+            <?php endif;?>
+            <?php
+            }
+                if (!$_SESSION['isAdmin']): ?>
+                    <a href="index.php?controller=comment&task=delete&id=<?= $commentaire['id'] ?>" onclick="return window.confirm('Êtes vous sûr de vouloir supprimer ce commentaire ?')" class="btn btn-outline-secondary"><img src="../svg/hand-thumbs-down.svg" alt="" width="24" height="24" title="hand-thumbs-down"></a>
                 <?php endif;?>
             </div>
             </div>
