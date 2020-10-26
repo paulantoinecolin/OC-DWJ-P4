@@ -1,10 +1,3 @@
-<div class="jumbotron">
-  <div class="container">
-    <h1 class="display-4 font-weight-bold"">Jean Forteroche, écrivain sans histoires</h1>
-    <p class="lead font-weight-bold font-italic">Chaque jour retrouvez un nouveau chapitre de mon livre</p>
-  </div>
-  </div>
-
 <div class="container">
     <div class="news">
 

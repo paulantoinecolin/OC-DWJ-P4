@@ -10,7 +10,7 @@ class Article extends Controller
     public function index()
     {
         // find all articles in db and order by desc date
-        $articles = $this->model->findAll("postcreatedate DESC");
+        $articles = $this->model->findAll("postcreatedate ASC");
 
         // view title
         $pageTitle = "Accueil";

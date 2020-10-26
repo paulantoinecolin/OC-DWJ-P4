@@ -1,17 +1,10 @@
-<!-- <?php if (isset($_GET['msg'])): ?>
+<?php if (isset($_GET['msg'])): ?>
 	    <div class="alert alert-success">Vous êtes bien déconnecté</div>
 <?php endif ?>
 
 <?php if ($error): ?>
 	<div class="alert alert-danger"><?= $error ?></div>
-<?php endif ?> -->
-
-<div class="jumbotron">
-  <div class="container">
-    <h1 class="display-4 font-weight-bold"">Jean Forteroche, écrivain sans histoires</h1>
-    <p class="lead font-weight-bold font-italic">Chaque jour retrouvez un nouveau chapitre de mon livre</p>
-  </div>
-  </div>
+<?php endif ?>
 
 <div class="container">
     <div class="news">
