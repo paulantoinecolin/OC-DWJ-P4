@@ -27,3 +27,7 @@ body {
     background-size: cover;
     height: 400px;
   }
+
+  .jumbotron a:hover, a:visited, a:link, a:active {
+    text-decoration: none;
+  }
