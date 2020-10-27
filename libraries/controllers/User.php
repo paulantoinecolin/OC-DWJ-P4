@@ -6,38 +6,60 @@ class User extends Controller
 {
     protected $modelName = \Models\User::class;
 
-    public function index()
-    {    
-        if ($_SESSION['role'] = "admin") {
-            
-            \Renderer::render('admin/login');
-        } else {
-            // find all articles in db and order by desc date
-            $articleModel = new \Models\Article();
-            $articles = $articleModel->findAll("postcreatedate DESC");
-       
-            // view title
-            $pageTitle = "Dashboard";
-    
-            \Renderer::render('admin/dashboard', compact('pageTitle', 'articles'));
-        }
+    public function admin()
+    {
+        $error = null;
+
+        \Renderer::render('admin/login', compact('error'));
     }
 
     public function login()
     {
-        $error = null;
-        // $password = '$2y$12$4kx3VFNpNhxgXDUXVmwiSOLJ0OgAhEKjfVc3b3gtvueBgpPucnKgO';
-        // password_verify($_POST['password'], $password)
-        $password = 'doe';
+        $isconnected = false;
 
-        if (!empty($_POST['login']) && !empty($_POST['password'])) {
-        if ($_POST['login'] === 'Jean_Forteroche' && $_POST['password'] === 'doe') {
-            // session_start();
-            $_SESSION['role'] = "user";
-            exit();
-        } else {
-            $error = 'Identifiants incorrects';
+        $error = null;
+
+        // we check the form datas in POST and that they are not null
+        // first user name
+        $tryUsername = null;
+        if (!empty($_POST['tryUsername'])) {
+            $tryUsername = htmlspecialchars($_POST['tryUsername']);
+        }
+
+        // then user password
+        $tryPassword = null;
+        if (!empty($_POST['tryPassword'])) {
+            $tryPassword = htmlspecialchars($_POST['tryPassword']);
+        }
+
+        $adminInfo = $this->model->login();
+
+        $username = $adminInfo['username'];
+        $userpassword = $adminInfo['userpassword'];
+
+            if ($tryUsername === $username && password_verify($tryPassword, $userpassword)) {
+                $_SESSION['isAdmin'] = true;
+                \Http::redirect("index.php");
+            } else {
+                $error = $_SERVER['REQUEST_METHOD'] === 'POST'? 'Identifiants incorrects' : null;
+                $_SESSION['isAdmin'] = false;
+                \Renderer::render('admin/login', compact('error', 'isconnected'));
+            }
+    }
+    
+    public function logout()
+    {
+        $_SESSION['isAdmin'] = false;
+        \Http::redirect("index.php");
+    }
+
+    public static function isAdmin()
+    {
+        if (!$_SESSION['isAdmin']) {
+            \Http::redirect("index.php");
+            die();
         }
     }
 }
-}
+
+

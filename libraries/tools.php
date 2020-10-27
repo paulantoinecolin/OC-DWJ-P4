@@ -11,6 +11,6 @@
         // function logout()
         // {
         //     session_start();
-        //     unset($_SESSION['connected']);
+        //     unset($_SESSION['isAdmin']);
         //     // header('Location: login.php?msg=logout_success');
         // }

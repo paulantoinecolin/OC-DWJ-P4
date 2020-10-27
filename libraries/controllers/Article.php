@@ -12,12 +12,9 @@ class Article extends Controller
         // find all articles in db and order by desc date
         $articles = $this->model->findAll("postcreatedate ASC");
 
-        // view title
-        $pageTitle = "Accueil";
-
         // render the view for the ob_start
         // use compact/extract functions to alternate between an array and variables
-        \Renderer::render('articles/index', compact('pageTitle', 'articles'));
+        \Renderer::render('articles/index', compact('articles'));
     }
 
     // Display one post and its comments
@@ -49,14 +46,15 @@ class Article extends Controller
 
     public function write()
     {
+        User::isAdmin();
         \Renderer::render('articles/write');
     }
 
     // Insert a new post
     public function insert()
     {
+        User::isAdmin();
         // we check the form datas in POST and that they are not null
-
         // first the title
         $posttitle = null;
         if (!empty($_POST['posttitle'])) {
@@ -83,7 +81,7 @@ class Article extends Controller
 
     public function edit()
     {
-        
+        User::isAdmin();
         // let's say we don't have a param "id"
         $article_id = null;
         
@@ -109,6 +107,7 @@ class Article extends Controller
 
     public function update()
     {
+        User::isAdmin();
         // we catch the "id" param in GET
         if (empty($_GET['id']) || !ctype_digit($_GET['id'])) {
             die("Ho ! Fallait préciser le paramètre id en GET !");
@@ -145,6 +144,7 @@ class Article extends Controller
     // delete one post
     public function delete()
     {
+        User::isAdmin();
         // we check that GET does have an "id" param & int => delete.php?id=202
         if (empty($_GET['id']) || !ctype_digit($_GET['id'])) {
             die("Ho ?! Tu n'as pas précisé l'id de l'article !");

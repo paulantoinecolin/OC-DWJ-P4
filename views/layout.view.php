@@ -1,5 +1,3 @@
-<pre><?php var_dump($_SESSION); ?></pre>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,13 +5,14 @@
         <meta charset="utf-8" />
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
         <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
         <link href="/css/style.css" rel="stylesheet" /> 
         <title>Jean Forteroche - Ecrivain - <?= $pageTitle ?></title>
-        <script src="https://cdn.tiny.cloud/1/9fmszb44igwq5ax4mdmk1p0o75hgom6frjdv4um7iddv4uib/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
-
 
 
 </head>
+
+
 
 <body>
 
@@ -25,6 +24,10 @@
   </div>
   </div>
   </a>
+
+  <?php if ($_SESSION['isAdmin'] ): ?>
+  <button class="btn btn-primary" onclick="window.location='/index.php?controller=user&task=logout'">logout</button>
+  <?php endif;?>
 
     <?= $pageContent ?>
 

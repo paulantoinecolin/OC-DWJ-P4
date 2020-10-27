@@ -21,10 +21,14 @@ class Comment extends Model
 
     // !! insertComment() -> create()
     // We write a new comment in the db by using the compact function of php
-    public function insert(string $commentpseudo, string $commenttext, int $postid) : void
+    public function insert(string $commentpseudo, string $commenttext, int $postid): int
     {
         $query = $this->db->prepare('INSERT INTO comments SET commentpseudo = :commentpseudo, commenttext = :commenttext, postid = :postid');
         $query->execute(compact('commentpseudo', 'commenttext', 'postid'));
+
+        $lastInsertId = $this->db->lastInsertId();
+
+        return $lastInsertId;
     }
 
     // We need a "Report a comment"

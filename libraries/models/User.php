@@ -8,10 +8,9 @@ class User extends Model
 
     public function login()
     {
-        $db = $this->dbConnect();
-        $req = $db->prepare('SELECT username, userpassword FROM user WHERE user = ??');
-        $adminId = $req->execute(array($username, $userpassword));
-
-        return $adminId;
+        $query = $this->db->prepare("SELECT username, userpassword FROM users");
+        $query->execute();
+        $item = $query->fetch();
+        return $item;
     }
 }

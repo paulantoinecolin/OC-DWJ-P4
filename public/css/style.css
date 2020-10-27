@@ -1,5 +1,5 @@
 body {
-    font-family: 'Montserrat',sans-serif;
+    font-family: 'Roboto', 'Montserrat',sans-serif;
     font-size: 17px;
     font-style: normal;
     font-weight: 400;
@@ -31,3 +31,25 @@ body {
   .jumbotron a:hover, a:visited, a:link, a:active {
     text-decoration: none;
   }
+
+  .card {
+    margin: 2% 0;
+  }
+
+  .card a:hover, a:visited, a:link, a:active {
+    text-decoration: none;
+  }
+
+  .btn {
+    margin: 1% 0;
+  }
+
+  .alert {
+    display:inline-block;
+  }
+
+
+  /* .alert-login {
+  margin: 0 auto;
+  display:inline-block;
+} */

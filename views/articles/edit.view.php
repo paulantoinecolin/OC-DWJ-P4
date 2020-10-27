@@ -8,7 +8,6 @@
         </div>
         <div>
             <textarea name="posttext" id="tiny" cols="50" rows="50" placeholder=""><?= $article['posttext'] ?></textarea>
-            <input type="hidden" name="id" value="">
         </div>
         <div>
             <button>Publier</button>
@@ -19,8 +18,12 @@
     </div>
 <div>
 
+<?php if ($_SESSION['isAdmin'] ): ?>
+    <script src="https://cdn.tiny.cloud/1/9fmszb44igwq5ax4mdmk1p0o75hgom6frjdv4um7iddv4uib/tinymce/5/tinymce.min.js" referrerpolicy="origin">
+</script>
 <script>
     tinymce.init({
         selector: '#tiny'
     });
 </script>
+<?php endif;?>

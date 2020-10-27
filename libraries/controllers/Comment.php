@@ -43,14 +43,15 @@ class Comment extends Controller
         }
 
         // we insert the comment
-        $this->model->insert($commentpseudo, $commenttext, $id);
+        $comment_id = $this->model->insert($commentpseudo, $commenttext, $id);
 
-        \Http::redirect("index.php?controller=article&task=show&id=" . $id);
+        \Http::redirect("index.php?controller=article&task=show&id=" . $id. "#comment" . $comment_id);
     }
 
     // delete a comment
     public function delete()
     {
+        User::isAdmin();
         // we catch the "id" param in GET
         if (empty($_GET['id']) || !ctype_digit($_GET['id'])) {
             die("Ho ! Fallait préciser le paramètre id en GET !");
@@ -98,6 +99,7 @@ class Comment extends Controller
      // This method is necessary for the admin only
     public function moderate()
     {
+        User::isAdmin();
         // we catch the "id" param in GET
         if (empty($_GET['id']) || !ctype_digit($_GET['id'])) {
             die("Ho ! Fallait préciser le paramètre id en GET !");
