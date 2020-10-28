@@ -1,7 +1,3 @@
-<!-- <?php if (isset($_GET['msg'])): ?>
-	    <div class="alert alert-success">Vous êtes bien déconnecté</div>
-<?php endif ?> -->
-
 <div class="container">
 	<div class="news">
 		

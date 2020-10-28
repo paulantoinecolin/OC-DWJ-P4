@@ -1,13 +1,13 @@
 <div class="posts-container">
         <div class="post-content">
 
-                <?php if ($_SESSION['isAdmin'] ): ?>
-                    <div class="card border-dark" style="width: 100%;">
-                    <div class="card-body">
-                    <a href="index.php?controller=article&task=write"><img src="../svg/plus-circle.svg" alt="" width="32" height="32" title="plus-circle">REDIGER UN NOUVEL ARTICLE</a>
-                    </div>
-                </div>
-                <?php endif;?>
+        <?php if ($_SESSION['isAdmin'] ): ?>
+  <div class="card border-dark" style="width: 100%;">
+    <div class="card-body">
+      <a href="index.php?controller=article&task=write"><img src="../svg/plus-circle.svg" alt="" width="32" height="32" title="plus-circle">REDIGER UN NOUVEL ARTICLE</a>
+    </div>
+  </div>
+<?php endif;?>
 
             <?php foreach ($articles as $article) : ?>
                 <div class="card border-dark" style="width: 100%;">

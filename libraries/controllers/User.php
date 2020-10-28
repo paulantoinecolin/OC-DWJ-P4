@@ -15,8 +15,6 @@ class User extends Controller
 
     public function login()
     {
-        $isconnected = false;
-
         $error = null;
 
         // we check the form datas in POST and that they are not null
@@ -37,14 +35,14 @@ class User extends Controller
         $username = $adminInfo['username'];
         $userpassword = $adminInfo['userpassword'];
 
-            if ($tryUsername === $username && password_verify($tryPassword, $userpassword)) {
-                $_SESSION['isAdmin'] = true;
-                \Http::redirect("index.php");
-            } else {
-                $error = $_SERVER['REQUEST_METHOD'] === 'POST'? 'Identifiants incorrects' : null;
-                $_SESSION['isAdmin'] = false;
-                \Renderer::render('admin/login', compact('error', 'isconnected'));
-            }
+        if ($tryUsername === $username && password_verify($tryPassword, $userpassword)) {
+            $_SESSION['isAdmin'] = true;
+            \Http::redirect("index.php");
+        } else {
+            $error = $_SERVER['REQUEST_METHOD'] === 'POST'? 'Identifiants incorrects' : null;
+            $_SESSION['isAdmin'] = false;
+            \Renderer::render('admin/login', compact('error'));
+        }
     }
     
     public function logout()
@@ -60,6 +58,19 @@ class User extends Controller
             die();
         }
     }
+
+    public function moderation()
+    {
+        User::isAdmin();
+
+        $articleModel = new \Models\Article();
+        $articles = $articleModel->findAll();
+
+        $commentModel = new \Models\Comment();
+        $commentaires = $commentModel->findAllReported();
+        $articles_id = $commentaires['postid'];
+
+
+        \Renderer::render('admin/moderation', compact('articles', 'commentaires', 'article_id'));
+    }
 }
-
-

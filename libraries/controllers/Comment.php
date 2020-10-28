@@ -96,7 +96,7 @@ class Comment extends Controller
         \Http::redirect("index.php?controller=article&task=show&id=" . $article_id);
     }
     
-     // This method is necessary for the admin only
+    // This method is necessary for the admin only
     public function moderate()
     {
         User::isAdmin();

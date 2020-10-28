@@ -12,8 +12,6 @@
 
 </head>
 
-
-
 <body>
 
 <a href="/">
@@ -25,17 +23,31 @@
   </div>
   </a>
 
-  <?php if ($_SESSION['isAdmin'] ): ?>
-  <button class="btn btn-primary" onclick="window.location='/index.php?controller=user&task=logout'">logout</button>
-  <?php endif;?>
-
-    <?= $pageContent ?>
-
-    <footer class="page-footer font-small blue">
-    <div class="footer-copyright text-center py-3">© 2020 Copyright : Jean Forteroche - 
-    <a href="#/privacy-policy/">Politique de confidentialité</a>
+  <?php if ($_SESSION['isAdmin']): ?>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <a class="navbar-brand" href="/">MENU</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <a class="nav-link active" href="/">Articles <span class="sr-only">(current)</span></a>
+      <a class="nav-link" href="/index.php?controller=user&task=moderation">Commentaires</a>
+      <a class="nav-link" href="/index.php?controller=user&task=logout">Logout</a>
     </div>
-    </footer>
+  </div>
+</nav>
+<?php endif;?>
+
+
+
+  <?= $pageContent ?>
+
+  <footer class="page-footer font-small blue">
+  <div class="footer-copyright text-center py-3">© 2020 Copyright : Jean Forteroche - 
+  <a href="#/privacy-policy/">Politique de confidentialité</a>
+  </div>
+  </footer>
     
 </body>
 
