@@ -16,7 +16,7 @@
       <th scope="row"><?= $commentaire['commentpseudo'] ?></th>
       <td><small>Le <?= $commentaire['commentcreationdate'] ?></small></br><?= $commentaire['commenttext'] ?></td>
       <td>
-            <h2 class="#<?= $commentaire['id'] ?>"><?= $article_id ?></h2>
+            <h2 class="#<?= $commentaire['id'] ?>"><?= $articles_id ?></h2>
     </tr>
     <?php endforeach ?>
   </tbody>

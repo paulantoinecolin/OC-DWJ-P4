@@ -25,7 +25,7 @@ class Comment extends Model
         $results = $this->db->query("SELECT * FROM comments WHERE commentflagged = 1 ORDER BY postid ASC");
         $commentaires = $results->fetchAll();
 
-        return $commentaires;
+       return $commentaires;
     }
 
     // !! insertComment() -> create()
