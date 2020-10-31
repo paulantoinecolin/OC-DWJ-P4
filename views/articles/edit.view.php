@@ -18,7 +18,7 @@
     </div>
 <div>
 
-<?php if ($_SESSION['isAdmin'] ): ?>
+<?php if ($_SESSION['isAdmin']): ?>
     <script src="https://cdn.tiny.cloud/1/9fmszb44igwq5ax4mdmk1p0o75hgom6frjdv4um7iddv4uib/tinymce/5/tinymce.min.js" referrerpolicy="origin">
 </script>
 <script>

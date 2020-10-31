@@ -58,20 +58,4 @@ class User extends Controller
             die();
         }
     }
-
-    public function moderation()
-    {
-        User::isAdmin();
-
-        $article_id = null;
-
-        $articleModel = new \Models\Article();
-        $articles = $articleModel->findAll();
-        
-        $commentModel = new \Models\Comment();
-        $commentaires = $commentModel->findAllReported();
-        $article_id = $commentaires['postid'];
-
-        \Renderer::render('admin/moderation', compact('articles', 'commentaires', 'article_id'));
-    }
 }

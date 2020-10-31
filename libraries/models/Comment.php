@@ -19,15 +19,6 @@ class Comment extends Model
         return $commentaires;
     }
 
-    public function findAllReported() : array
-    {
-        // Récupération des commentaires de l'article en question
-        $results = $this->db->query("SELECT * FROM comments WHERE commentflagged = 1 ORDER BY postid ASC");
-        $commentaires = $results->fetchAll();
-
-       return $commentaires;
-    }
-
     // !! insertComment() -> create()
     // We write a new comment in the db by using the compact function of php
     public function insert(string $commentpseudo, string $commenttext, int $postid): int

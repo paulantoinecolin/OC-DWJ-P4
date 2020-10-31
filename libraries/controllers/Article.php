@@ -44,6 +44,15 @@ class Article extends Controller
         \Renderer::render('articles/show', compact('pageTitle', 'article', 'commentaires', 'article_id'));
     }
 
+    public function moderation()
+    {
+        User::isAdmin();
+
+        $comments = $this->model->findAllReportedWithArticle();
+
+        \Renderer::render('admin/moderation', compact('comments'));
+    }
+
     public function write()
     {
         User::isAdmin();

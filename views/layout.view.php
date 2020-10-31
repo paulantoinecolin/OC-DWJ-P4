@@ -32,7 +32,7 @@
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
       <a class="nav-link active" href="/">Articles <span class="sr-only">(current)</span></a>
-      <a class="nav-link" href="/index.php?controller=user&task=moderation">Commentaires</a>
+      <a class="nav-link" href="/index.php?controller=article&task=moderation">Commentaires</a>
       <a class="nav-link" href="/index.php?controller=user&task=logout">Logout</a>
     </div>
   </div>
