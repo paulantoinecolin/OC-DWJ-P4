@@ -7,7 +7,7 @@ class Article extends Model
     protected $table = "posts";
 
     // We write a new article in the db by using the compact function of php
-    public function insert(string $posttitle, string $posttext) : int
+    public function insert(string $posttitle, string $posttext): int
     {
         $query = $this->db->prepare('INSERT INTO posts SET posttitle = :posttitle, posttext = :posttext');
         $query->execute(compact('posttitle', 'posttext'));
@@ -23,7 +23,7 @@ class Article extends Model
         $query->execute(compact('posttitle', 'posttext', 'id'));
     }
 
-    public function findAllReportedWithArticle() : array
+    public function findAllReportedWithArticle(): array
     {
         // Récupération des commentaires de l'article en question
         $results = $this->db->query("SELECT comments.id as comments_id, comments.commenttext, comments.commentpseudo,comments.commentcreationdate, posts.id, posts.posttitle as title FROM posts INNER JOIN comments on comments.postid = posts.id WHERE commentflagged = 1 ORDER BY postid ASC");

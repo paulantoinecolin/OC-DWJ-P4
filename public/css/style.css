@@ -11,7 +11,6 @@ body {
 .posts-container {
     padding-right: 15px;
     padding-left: 15px;
-    padding-top: 60px;
     padding-bottom: 20px;
     overflow: hidden;
     box-sizing: border-box;
@@ -33,12 +32,12 @@ body {
     text-decoration: none;
   }
 
-  .card {
-    margin: 2% 0;
-  }
-
   .card a:hover, a:visited, a:link, a:active {
     text-decoration: none;
+  }
+
+  .btn_newarticle {
+    margin-right: 10px;
   }
 
   .btn {
@@ -47,4 +46,17 @@ body {
 
   .alert {
     display:inline-block;
+  }
+
+  .btn-logout {
+  position: relative;
+  text-align: right;
+  }
+
+  .logout img {
+    align-items: flex-end;
+  }
+
+  .card-comments {
+    margin: 20px 0;
   }

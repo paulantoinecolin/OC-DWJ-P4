@@ -20,10 +20,10 @@ class Article extends Controller
     // Display one post and its comments
     public function show()
     {
-        
+
         // let's say we don't have a param "id"
         $article_id = null;
-        
+
         // but if there is one and it's an int we use it
         if (!empty($_GET['id']) && ctype_digit($_GET['id'])) {
             $article_id = $_GET['id'];
@@ -33,7 +33,7 @@ class Article extends Controller
         if (!$article_id) {
             die("Vous devez préciser un paramètre `id` dans l`URL !");
         }
-        
+
         $article = $this->model->find($article_id);
         $commentModel = new \Models\Comment();
         $commentaires = $commentModel->findAllWithArticle($article_id);
@@ -63,6 +63,7 @@ class Article extends Controller
     public function insert()
     {
         User::isAdmin();
+
         // we check the form datas in POST and that they are not null
         // first the title
         $posttitle = null;
@@ -78,13 +79,8 @@ class Article extends Controller
             $posttext = htmlspecialchars($_POST['posttext']);
         }
 
-        // last global check
-        // if (!$posttitle|| $posttext) {
-        //     die("Votre formulaire a été mal rempli !");
-        // }
-
         $article_id = $this->model->insert($posttitle, $posttext);
-        
+
         \Http::redirect("index.php?controller=article&task=show&id=" . $article_id);
     }
 
@@ -93,7 +89,7 @@ class Article extends Controller
         User::isAdmin();
         // let's say we don't have a param "id"
         $article_id = null;
-        
+
         // but if there is one and it's an int we use it
         if (!empty($_GET['id']) && ctype_digit($_GET['id'])) {
             $article_id = $_GET['id'];
@@ -103,11 +99,11 @@ class Article extends Controller
         if (!$article_id) {
             die("Vous devez préciser un paramètre `id` dans l`URL !");
         }
-        
+
         $article = $this->model->find($article_id);
         // var_dump($article);
         // die();
-      
+
         // view title
         $pageTitle = $article['posttitle'];
 
@@ -121,9 +117,9 @@ class Article extends Controller
         if (empty($_GET['id']) || !ctype_digit($_GET['id'])) {
             die("Ho ! Fallait préciser le paramètre id en GET !");
         }
-        
+
         $id = $_GET['id'];
-        
+
         // we check the form datas in POST and that they are not null
         // first the title
         $posttitle = null;
@@ -145,7 +141,7 @@ class Article extends Controller
         // }
 
         $article_id = $this->model->update($posttitle, $posttext, $id);
-        
+
         \Http::redirect("index.php?controller=article&task=show&id=" . $id);
     }
 
@@ -163,7 +159,7 @@ class Article extends Controller
 
         // we check that the post exists
         $article = $this->model->find($id);
-        
+
         if (!$article) {
             die("L'article $id n'existe pas, vous ne pouvez donc pas le supprimer !");
         }

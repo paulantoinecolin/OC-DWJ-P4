@@ -2,53 +2,36 @@
 <html lang="en">
 
 <head>
-        <meta charset="utf-8" />
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-        <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-        <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-        <link href="/css/style.css" rel="stylesheet" /> 
-        <title>Jean Forteroche - Ecrivain - <?= $pageTitle ?></title>
-
-
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <link href="/css/style.css" rel="stylesheet" />
+  <title>Jean Forteroche - Ecrivain<?php if (isset($pageTitle)) {
+    echo " - " . $pageTitle;
+} ?></title>
 </head>
 
 <body>
 
-<a href="/">
-<div class="jumbotron">
-  <div class="container">
-    <h1 class="display-4 font-weight-bold"">Jean Forteroche, écrivain sans histoires</h1>
-    <p class="lead font-weight-bold font-italic">Chaque jour retrouvez un nouveau chapitre de mon livre</p>
-  </div>
-  </div>
-  </a>
-
-  <?php if ($_SESSION['isAdmin']): ?>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-  <a class="navbar-brand" href="/">MENU</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-    <div class="navbar-nav">
-      <a class="nav-link active" href="/">Articles <span class="sr-only">(current)</span></a>
-      <a class="nav-link" href="/index.php?controller=article&task=moderation">Commentaires</a>
-      <a class="nav-link" href="/index.php?controller=user&task=logout">Logout</a>
+  <a href="/">
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container">
+        <h1 class="display-4 font-weight-bold"">Jean Forteroche, écrivain sans histoires</h1>
+    <p class=" lead font-weight-bold font-italic">Chaque jour retrouvez un nouveau chapitre de mon livre</p>
+      </div>
     </div>
-  </div>
-</nav>
-<?php endif;?>
-
-
+  </a>
 
   <?= $pageContent ?>
 
   <footer class="page-footer font-small blue">
-  <div class="footer-copyright text-center py-3">© 2020 Copyright : Jean Forteroche - 
-  <a href="#/privacy-policy/">Politique de confidentialité</a>
-  </div>
+    <div class="footer-copyright text-center py-3">© 2020 Copyright : Jean Forteroche -
+      <a href="#/privacy-policy/">Politique de confidentialité</a>
+    </div>
   </footer>
-    
+
 </body>
 
 </html>

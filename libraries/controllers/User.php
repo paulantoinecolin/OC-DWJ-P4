@@ -39,12 +39,12 @@ class User extends Controller
             $_SESSION['isAdmin'] = true;
             \Http::redirect("index.php");
         } else {
-            $error = $_SERVER['REQUEST_METHOD'] === 'POST'? 'Identifiants incorrects' : null;
+            $error = $_SERVER['REQUEST_METHOD'] === 'POST' ? 'Identifiants incorrects' : null;
             $_SESSION['isAdmin'] = false;
             \Renderer::render('admin/login', compact('error'));
         }
     }
-    
+
     public function logout()
     {
         $_SESSION['isAdmin'] = false;

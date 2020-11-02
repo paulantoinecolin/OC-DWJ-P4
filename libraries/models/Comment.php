@@ -9,7 +9,7 @@ class Comment extends Model
     // !! findAllWithArticle() -> readAllFromPost()
     // !! $commentaires -> $comments
     // Return all Comments from one Article's ID
-    public function findAllWithArticle(int $article_id) : array
+    public function findAllWithArticle(int $article_id): array
     {
         // Récupération des commentaires de l'article en question
         $query = $this->db->prepare("SELECT * FROM comments WHERE postid = :id");

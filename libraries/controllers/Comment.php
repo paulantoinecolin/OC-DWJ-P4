@@ -5,7 +5,7 @@ namespace Controllers;
 class Comment extends Controller
 {
     protected $modelName = \Models\Comment::class;
-    
+
     // Insert a comment
     public function insert()
     {
@@ -36,7 +36,7 @@ class Comment extends Controller
         }
 
         $articleModel = new \Models\Article();
-        
+
         $article = $articleModel->find($id);
         if (!$article) {
             die("Ho ! L'article $id n'existe pas !");
@@ -45,7 +45,7 @@ class Comment extends Controller
         // we insert the comment
         $comment_id = $this->model->insert($commentpseudo, $commenttext, $id);
 
-        \Http::redirect("index.php?controller=article&task=show&id=" . $id. "#comment" . $comment_id);
+        \Http::redirect("index.php?controller=article&task=show&id=" . $id . "#comment" . $comment_id);
     }
 
     // delete a comment
@@ -95,7 +95,7 @@ class Comment extends Controller
 
         \Http::redirect("index.php?controller=article&task=show&id=" . $article_id);
     }
-    
+
     // This method is necessary for the admin only
     public function moderate()
     {

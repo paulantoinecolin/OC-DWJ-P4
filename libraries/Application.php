@@ -1,23 +1,24 @@
 <?php
 
-class Application {
+class Application
+{
     public static function process()
     {
         //Default view for index
         $controllerName = "Article";
         $task = "index";
-        
+
         if ($_SERVER['REQUEST_URI'] === '/admin') {
             \Http::redirect("index.php?controller=user&task=login");
         }
 
-        if(!empty($_GET['controller'])) {
+        if (!empty($_GET['controller'])) {
             // GET => article
             // = Article
             $controllerName = ucfirst($_GET['controller']);
         }
 
-        if(!empty($_GET['task'])) {
+        if (!empty($_GET['task'])) {
             $task = $_GET['task'];
         }
 
