@@ -1,5 +1,4 @@
-<div class="container">
-	<div class="news">
+<main class="container">
 
 		<?php if ($error) : ?>
 			<div class="alert alert-danger">
@@ -7,12 +6,13 @@
 			</div>
 		<?php endif ?>
 
-		<form action="index.php?controller=user&task=login" method="POST">
-			<div class="form-group">
-				<input class="form-control" type="text" name="tryUsername" placeholder="username">
-			</div>
-			<div class="form-group">
-				<input class="form-control" type="password" name="tryPassword" placeholder="password">
-			</div>
-			<button type="submit" class="btn btn-primary">Submit</button>
-		</form>
+			<form action="index.php?controller=user&task=login" method="POST">
+				<div class="form-group">
+					<input class="form-control" type="text" name="tryUsername" placeholder="username">
+				</div>
+				<div class="form-group">
+					<input class="form-control" type="password" name="tryPassword" placeholder="password">
+				</div>
+				<button type="submit" class="btn  btn-dark">Submit</button>
+			</form>
+</main>

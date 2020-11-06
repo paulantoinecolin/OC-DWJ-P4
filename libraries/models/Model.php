@@ -12,7 +12,6 @@ abstract class Model
         $this->db = \Database::dbConnect();
     }
 
-    // !! find() -> read()
     // Return One Item by it's ID
     public function find(int $id)
     {
@@ -22,15 +21,13 @@ abstract class Model
         return $item;
     }
 
-    // This is gonna be ADMIN ONLY
+    // This is ADMIN ONLY
     public function delete(int $id): void
     {
         $query = $this->db->prepare("DELETE FROM {$this->table} WHERE id = :id");
         $query->execute(['id' => $id]);
     }
 
-    // !! findAllArticles() -> readAll()
-    // !! $articles -> $items
     // Return Article list ordered by Creation Date
     public function findAll(?string $order = ""): array
     {
@@ -40,9 +37,9 @@ abstract class Model
             $sql .= " ORDER BY " . $order;
         }
 
-        // On utilisera ici la méthode query (pas besoin de préparation car aucune variable n'entre en jeu)
+        // We use query only (no need to prepare because no variable involved)
         $results = $this->db->query($sql);
-        // On fouille le résultat pour en extraire les données réelles
+        // We fetch all results to extract all data
         $articles = $results->fetchAll();
 
         return $articles;

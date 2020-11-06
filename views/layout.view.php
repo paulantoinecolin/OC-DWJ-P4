@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
   <meta charset="utf-8" />
@@ -16,12 +16,12 @@
 <body>
 
   <a href="/">
-    <div class="jumbotron jumbotron-fluid">
+    <header class="jumbotron jumbotron-fluid">
       <div class="container">
-        <h1 class="display-4 font-weight-bold"">Jean Forteroche, écrivain sans histoires</h1>
-    <p class=" lead font-weight-bold font-italic">Chaque jour retrouvez un nouveau chapitre de mon livre</p>
+        <h1 class="display-4 font-weight-bold">Jean Forteroche, écrivain sans histoires</h1>
+        <p class=" lead font-weight-bold font-italic">Chaque jour retrouvez un nouveau chapitre de mon livre</p>
       </div>
-    </div>
+    </header>
   </a>
 
   <?= $pageContent ?>

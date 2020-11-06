@@ -1,10 +1,6 @@
 <?php
 
-// Dans cette classe on va pouvoir récuperer/utiliser des requêtes HTTP telles que
-// Des redirections
-// La session
-// Des paramètres en GET ou en POST
-
+// Here we can get and use HTTP requests to make redirections...
 class Http
 {
     public static function redirect(string $url): void

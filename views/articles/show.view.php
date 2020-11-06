@@ -1,7 +1,7 @@
-<div class="container">
+<main class="container">
     <div class="news">
 
-        <div class="card border-dark" style="width: 100%;">
+        <article class="card border-dark" style="width: 100%;">
             <div class="card-body">
                 <h2 class="card-title"><?= $article['posttitle'] ?></h2>
                 <small><em>Ecrit le <?= $article['postcreatedate'] ?></em></small></br>
@@ -12,7 +12,7 @@
                     <a href="index.php?controller=article&task=delete&id=<?= $article['id'] ?>" onclick="return window.confirm(`Êtes vous sur de vouloir supprimer cet article ?!`)" class="btn btn-outline-secondary"><img src="../svg/trash.svg" alt="" width="24" height="24" title="trash"></a>
                 <?php endif; ?>
             </div>
-        </div>
+        </article>
 
         <div class="card-comments">
             <?php if (count($commentaires) === 0) : ?>
@@ -55,7 +55,7 @@
                     <input type="text" class="form-control" name="commentpseudo" placeholder="Votre pseudo">
                 </div>
                 <div>
-                    <textarea name="commenttext" id="" class="form-control" cols="30" rows="10" placeholder="Votre commentaire..."></textarea>
+                    <textarea name="commenttext" class="form-control" cols="30" rows="10" placeholder="Votre commentaire..."></textarea>
                     <input type="hidden" name="id" value="<?= $article_id ?>">
                 </div>
                 <div>
@@ -65,4 +65,4 @@
         </form>
 
     </div>
-    <div>
+</main>

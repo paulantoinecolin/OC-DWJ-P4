@@ -25,7 +25,7 @@ class Article extends Model
 
     public function findAllReportedWithArticle(): array
     {
-        // Récupération des commentaires de l'article en question
+        // We get each articles and their reported comments for admin dashboard
         $results = $this->db->query("SELECT comments.id as comments_id, comments.commenttext, comments.commentpseudo,comments.commentcreationdate, posts.id, posts.posttitle as title FROM posts INNER JOIN comments on comments.postid = posts.id WHERE commentflagged = 1 ORDER BY postid ASC");
         $comments = $results->fetchAll();
 

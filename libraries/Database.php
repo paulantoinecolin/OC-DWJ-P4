@@ -9,8 +9,8 @@ class Database
     {
         if (self::$instance === null) {
             self::$instance = new PDO('mysql:host=192.168.0.40; port=3306; dbname=jf_blog;charset=utf8', 'paul', 'grogro', [
-                PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-                PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
+                PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, // Return informations if error
+                PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC // By default we want arrays
             ]);
         }
 

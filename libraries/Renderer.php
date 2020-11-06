@@ -3,6 +3,8 @@
 class Renderer
 {
     // Render the view
+    // Get param $path to find which view to require
+    // Get param array to return the values needed in the view
     public static function render(string $path, array $variables = [])
     {
         extract($variables);

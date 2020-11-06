@@ -1,5 +1,4 @@
-<div class="posts-container">
-  <div class="post-content">
+<main class="posts-container">
 
     <?php if ($_SESSION['isAdmin']) : ?>
       <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -19,7 +18,6 @@
     <?php endif; ?>
 
     <div class="card border-dark table_comments" style="width: 100%;">
-      <div class="card-body">
         <table class="table table-striped">
           <thead>
             <tr>
@@ -44,5 +42,5 @@
             <?php endforeach ?>
           </tbody>
         </table>
-      </div>
-    </div>
+  </div>
+</main>

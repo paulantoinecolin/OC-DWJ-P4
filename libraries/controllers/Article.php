@@ -44,6 +44,7 @@ class Article extends Controller
         \Renderer::render('articles/show', compact('pageTitle', 'article', 'commentaires', 'article_id'));
     }
 
+    // Display Dashboard 2 view: reported comments only in table
     public function moderation()
     {
         User::isAdmin();
@@ -101,8 +102,6 @@ class Article extends Controller
         }
 
         $article = $this->model->find($article_id);
-        // var_dump($article);
-        // die();
 
         // view title
         $pageTitle = $article['posttitle'];
@@ -134,11 +133,6 @@ class Article extends Controller
             // we take care of security
             $posttext = htmlspecialchars($_POST['posttext']);
         }
-
-        // last global check
-        // if (!$posttitle|| $posttext) {
-        //     die("Votre formulaire a été mal rempli !");
-        // }
 
         $article_id = $this->model->update($posttitle, $posttext, $id);
 
