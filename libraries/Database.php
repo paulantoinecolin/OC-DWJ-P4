@@ -8,7 +8,7 @@ class Database
     public static function dbConnect(): PDO
     {
         if (self::$instance === null) {
-            self::$instance = new PDO('mysql:host=192.168.0.40; port=3306; dbname=jf_blog;charset=utf8', 'paul', 'grogro', [
+            self::$instance = new PDO('mysql:host=localhost; port=3306; dbname=oc_dwj_p4;charset=utf8', 'root', '', [
                 PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, // Return informations if error
                 PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC // By default we want arrays
             ]);
